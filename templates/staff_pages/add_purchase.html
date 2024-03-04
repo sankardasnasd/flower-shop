@@ -1,0 +1,76 @@
+
+{%include 'staff_pages/staff_header.html'%}
+<style>
+      body {
+    background-image: url("/static/login/images/6.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post">{% csrf_token %}
+
+
+    {% csrf_token %}
+<center>
+    <div class="col-6 bg-light">
+        <h1  style="color: #d81a69;">Purchase</h1>
+
+                    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Item Name</th>
+            <td> <select name="item" class="form-control" required>
+            <option value="">-----SELECT------</option>
+                {% for i in data %}
+                <option value="{{ i.id }}">
+                    {{ i.Item_Name }}
+                </option>
+                {% endfor %}
+            </select></td>
+        </tr>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>
+{#                            <input type="hidden" pattern="[0-9]+" name="id" required class="" value="{{ id }}">#}
+                            <input type="text" pattern="[0-9]+" name="Purch_Quantity" required class="form-control" placeholder="Enter Here">
+                        </th>
+                    </tr>
+                         <tr>
+                        <th>Cost Price</th>
+                        <th>
+{#                            <input type="hidden" pattern="[0-9]+" name="id" required class="" value="{{ id }}">#}
+                            <input type="text" pattern="[0-9]+" name="Cost" required class="form-control" placeholder="Enter Here">
+                        </th>
+                    </tr>
+
+
+                        <tr>
+                        <th>Selling Price</th>
+                        <th><input type="text" pattern="[0-9]+" name="Selling_Price" required class="form-control" placeholder="Enter Here"></th>
+                    </tr>
+
+                        <tr>
+                        <th></th>
+                        <th><input type="submit"  name="submit" required class="btn btn-success" ></th>
+                    </tr>
+
+
+
+
+</table>
+
+
+    </div>
+</center>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+{%include 'admin_pages/admin_header.html' %}
+<style>
+      body {
+    background-image: url("/static/login/images/6.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+
+<h1 style="color: #d81a69; ">Flower Items:</h1>
+<ul>
+    {% for i in q2_list %}
+        <li>{{ i.Flower_Name }} - {{ i.Color }}</li>
+    {% endfor %}
+</ul>
+
+
+
+</table>
+{%include 'footer.html' %}

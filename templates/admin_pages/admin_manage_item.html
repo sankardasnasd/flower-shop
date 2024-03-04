@@ -1,0 +1,189 @@
+{%include 'admin_pages/admin_header.html' %}
+
+<style>
+      body {
+    background-image: url("/static/login/images/5.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+
+<div class="container">
+    <center>
+
+{%if q1%}
+<div >
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<center>
+    <div class="col-6 bg-light">    <h1 style="color: #d81a69; ">UPDATE ITEM</h1>
+
+                        <table class="table table-bordered table-hover" style="color: black">
+        <tr>
+            <th>Name</th>
+            <td> <input type="text" id="Itemname" name="Itemname" value="{{q1.Item_Name}}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><textarea name="Itemdesc" id="Itemdesc" cols="80" rows="5"  class="form-control" required>{{q1.Item_Desc}}</textarea></td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td> <input type="file" id="Itemimg" name="Itemimg" value="{{q1.Item_Img}}" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td> <input type="text" id="Price" name="Price" value="{{q1.Item_Cost}}" class="form-control" required pattern="[0-9]+"></td>
+        </tr>
+        <tr>
+            <th>Profit Percentage</th>
+            <td> <input type="text" id="Profit" name="Profit" value="{{q1.Profit_Per}}" pattern="[0-9]{1,3}(\.[0-9]{1,2})?%"  class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Category</th>
+           <td>
+            <select name="Category" class="form-control">
+                <option value="{{q1.CAT_id}}" selected>{{q1.CAT.Cat_Name}}</option>
+                {%for i in q2%}
+            <option value="{{i.id}}">{{i.Cat_Name}}</option>
+               {%endfor%}
+            </select>
+        </td>
+{#        </tr>#}
+{#                         <tr>#}
+{#            <th>Flower</th>#}
+{#          <td>#}
+{##}
+{#            {%for i in a1%}#}
+{##}
+{#            <input type="checkbox" value="{{i.id}}" name="flower"/>{{i.Flower_Name}}#}
+{#                {%endfor%}#}
+{##}
+{#        </td>#}
+{#        </tr>#}
+
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Update" name="Update"></td>
+        </tr>
+
+</table>
+
+    </div>
+</center>
+</form>
+
+</div>
+{%else%}
+
+<div >
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<center>
+    <div class="col-6 bg-light">
+        <h1 style="color: #d81a69; ">ADD ITEM</h1>
+
+                        <table class="table table-bordered table-hover"  style="color: black">
+        <tr>
+            <th>Name</th>
+            <td> <input type="text" id="Itemname" name="Itemname" placeholder="Enter Here" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><textarea name="Itemdesc" id="Itemdesc" cols="80" placeholder="Enter Here" rows="5" class="form-control" required></textarea></td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td> <input type="file" id="Itemimg" name="Itemimg" placeholder="Enter Here" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td> <input type="text" id="Price" name="Price" placeholder="Enter Here" class="form-control" required pattern="[0-9]+"></td>
+        </tr>
+        <tr>
+            <th>Profit Percentage</th>
+            <td> <input type="text" id="Profit" placeholder="Enter Here" name="Profit" class="form-control" pattern="[0-9]{1,3}(\.[0-9]{1,2})?%"  required></td>
+        </tr>
+        <tr>
+            <th>Category</th>
+           <td>
+            <select name="Category" class="form-control" required>
+                <option value="">---Select---</option>
+                {%for i in a2%}
+            <option value="{{i.id}}">{{i.Cat_Name}}</option>
+               {%endfor%}
+            </select>
+        </td>
+        </tr>
+
+                          <tr>
+            <th>Flower</th>
+          <td>
+
+            {%for i in a1%}
+
+            <input type="checkbox" value="{{i.id}}" name="flower"/>{{i.Flower_Name}}
+                {%endfor%}
+
+        </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Submit" name="Submit"></td>
+        </tr>
+
+</table>
+
+    </div>
+</center>
+</form>
+
+    </div>
+    </center>
+    <br><br>
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>Category</th>
+           
+            <th>Item Name</th>
+            <th>Description</th>
+            <th>Profit Percentage</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Status</th>
+            <th>Action</th>
+            <th></th>
+            <th></th>
+            <th>View more</th>
+            <th>Update</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {%for i in a3%}
+    <tr>
+     <td>{{forloop.counter}}</td>
+     <td>{{i.CAT.Cat_Name}}</td>
+
+     <td>{{i.Item_Name}}</td>
+     <td>{{i.Item_Desc}} </td>
+     <td>{{i.Profit_Per}}</td>
+     <td>{{i.Item_Cost}}</td>
+     <td><img src="{{i.Item_Img}}" alt="" width="200" height="200"></td>
+     <td>{{i.Item_Status}}</td>
+     <td><a href="active_item/{{i.id}}" class="btn btn-info">Active</a></td>
+     <td><a href="deactive_item/{{i.id}}" class="btn btn-warning">Deactive</a></td>
+     <td><a href="add_flower/{{i.id}}" class="btn btn-primary">Add Flowers</a></td>
+     <td><a href="item_view_more/{{i.id}}" class="btn btn-info">View More</a></td>
+     <td><a href="/admin_update_item/{{i.id}}" class="btn btn-success">Update</a></td>
+
+  {%endfor%}
+
+  {%endif%}
+
+</table>
+</div>
+{%include 'footer.html' %}

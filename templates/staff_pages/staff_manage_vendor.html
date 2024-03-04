@@ -1,0 +1,136 @@
+{%include 'staff_pages/staff_header.html' %}
+<style>
+      body {
+    background-image: url("/static/login/images/6.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+<div class="container " >
+    <center>
+{%if q8%}
+
+<div class="bg-light">
+<form action="" method="post">
+    {% csrf_token %}
+
+    <h1 style="color: #d81a69; ">UPDATE VENDOR</h1>
+    <table class="table table-bordered">
+        <tr>
+            <th>Company Name</th>
+            <td> <input type="text" id="Vname" name="Vname" value="{{q8.V_name}}" required  placeholder="Enter Here" class="form-control"></td>
+        </tr>
+        <tr>
+            <th> Email ID</th>
+            <td> <input type="email" id="Vemail" name="Vemail" value="{{q8.V_Email}}" required   placeholder="Enter Here" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td> <input type="text" id="Place" name="Place" value="{{q8.V_Place}}" required  placeholder="Enter Here" class="form-control" ></td>
+        </tr>
+
+        <tr>
+            <th>District</th>
+            <td> <input type="text" id="Dist" name="Dist" value="{{q8.V_Dist}}" pattern="[a-z A-Z]+" required  placeholder="Enter Here" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Pincode</th>
+            <td> <input type="text" id="Pin" name="Pin" value="{{q8.V_Pin}}" pattern="[0-9]{6}" required placeholder="Enter Here" class="form-control" ></td>
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td> <input type="text" id="Phone" name="Phone" value="{{q8.V_Phone}}" pattern="[6789][0-9]{9}" required  placeholder="Enter Here" class="form-control" ></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Update" name="Update" class="btn btn-success"></td>
+        </tr>
+
+</table>
+</form>
+
+</div>
+{%else%}
+<div class="bg-light">
+<form action="" method="post">
+    <h1 style="color: #d81a69; ">  VENDOR</h1>
+    <table>
+        <tr>
+            <th>Company Name</th>
+            <td> <input type="text" id="Vname" name="Vname" required  placeholder="Enter Here" class="form-control"></td>
+        </tr>
+        <tr>
+            <th> Email ID</th>
+            <td> <input type="email" id="Vemail" name="Vemail" required   placeholder="Enter Here" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td> <input type="text" id="Place" name="Place" required   placeholder="Enter Here" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td> <input type="text" id="City" name="City" required   placeholder="Enter Here" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>District</th>
+            <td> <input type="text" id="Dist" name="Dist" pattern="[a-z A-Z]+" required   placeholder="Enter Here" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Pincode</th>
+            <td> <input type="text" id="Pin" name="Pin" pattern="[0-9]{6}"  placeholder="Enter Here" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td> <input type="text" id="Phone" name="Phone" pattern="[6789][0-9]{9}" required   placeholder="Enter Here" class="form-control"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Submit"></td>
+        </tr>
+
+</table>
+</form>
+
+</div>
+</center>
+<br><br>
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>Company Name</th>
+            <th>Email ID</th>
+            <th>Place</th>
+            <th>District</th>
+            <th>Pincode</th>
+            <th>Phone Number</th>
+            <th>Status</th>
+            <th>Action</th>
+            <th></th>>
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+    {%for i in a3%}
+
+     <td>{{forloop.counter}}</td>
+     <td>{{i.V_name}}</td>
+     <td>{{i.V_Email}}</td>
+     <td>{{i.V_Place}}</td>
+     <td>{{i.V_Dist}}</td>
+     <td>{{i.V_Pin}}</td>
+     <td>{{i.V_Phone}}</td>
+     <td>{{i.V_Status}}</td>
+     <td><a href="/staff_update_vendor/{{i.id}}" class="btn btn-success">Update</a></td>
+     <td><a href="/staff_add_purchase/{{i.id}}" class="btn btn-warning">Add Purchase</a></td>
+
+    <tr>
+        {%endfor%}
+        {%endif%}
+
+    </tbody>
+</table>
+</div>
+
+{%include 'footer.html' %}

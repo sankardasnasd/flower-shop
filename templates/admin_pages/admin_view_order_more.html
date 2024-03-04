@@ -1,0 +1,66 @@
+{%include 'admin_pages/admin_header.html' %}
+<style>
+      body {
+    background-image: url("/static/login/images/5.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+
+
+<div class="container">
+    <center>
+
+<table class="table table-success table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Total Amount</th>
+    </tr>
+    <tr>
+        <td>{{ a.CUSTOMER.C_Fname }}{{ a.CUSTOMER.C_Lname }}</td>
+        <td>{{ a.Tot_Amount }}</td>
+    </tr>
+</table>
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th> Sl</th>
+{#            <th> Item</th>#}
+            <th> Name</th>
+            <th> Image</th>
+            <th></th>
+            <th></th>
+
+
+        </tr>
+    </thead>
+    {% for i in b %}
+    <tbody>
+
+     <td>{{ forloop.counter }}</td>
+            <td>{{ i.ITEM.Item_Name }}<br></td>
+{#            <td>{{ data.CARTMAST.CUSTOMER.C_Phone }}</td>#}
+            <td><img src="{{ i.ITEM.Item_Img.url }}" width="200px" height="200px"> </td>
+     <td>
+         {% if i.Image == "" %}
+         <p class="text-danger">Not Available</p>
+         {% else %}
+         <img src="{{ i.Image }}" width="200px" height="200px">
+         {% endif %}
+
+     </td>
+     <td><a href="/admin_view_customization/{{ i.id }}" class="btn btn-info">Customize</a> </td>
+
+{##}
+{#  {%endfor%}#}
+    </tbody>
+    {% endfor %}
+
+
+</table>
+</div>
+
+
+
+{#{%include 'footer.html' %}#}

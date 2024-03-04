@@ -1,0 +1,86 @@
+
+{%include 'customer_pages/customer_header.html' %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .payment-form {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="" style="background-color: #1a1a1a">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="payment-form">
+                    <h2 class="text-center">Payment</h2>
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" class="form-control" id="card-number"  placeholder="Enter card number" pattern="[0-9]{16}" maxlength="16" title="Enter Valid 16 digits " name="Card_No" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiration-date">Expiration Date</label>
+                            <input type="text" class="form-control" id="expiration-date" placeholder="MM/YYYY" maxlength="7" name="Expire_Date" required>
+                        </div>
+{#                        <div class="form-group">#}
+{#                            <label for="cvv">CVV</label>#}
+{#                            <input type="text" class="form-control" id="cvv" placeholder="Enter CVV">#}
+{#                        </div>#}
+                        <div class="form-group">
+                            <label for="name">Cardholder Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter cardholder name" name="Card_Holdername" required>
+                        </div>
+{#                        <div class="form-group">#}
+{#                            <label for="name">Amount</label>#}
+{#                            <input type="text" class="form-control" value="{{ data.CART_MASTER.Total_Amount }}" id="name" placeholder="Enter cardholder name" name="amount">#}
+{#                        </div>#}
+                        <div class="form-group"><p></p>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-info btn-block" name="submit" value="PAY NOW {{ s.Order_Total }}  "></input>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+</body>
+</html>
+{%include 'footer.html' %}

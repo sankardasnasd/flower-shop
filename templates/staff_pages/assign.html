@@ -1,0 +1,40 @@
+{%include 'staff_pages/staff_header.html'%}
+<style>
+      body {
+    background-image: url("/static/login/images/6.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+<h1 style="color: #d81a69;">Assign</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">{% csrf_token %}
+    <table class="table table-bordered">
+        <tr>
+            <th>Delivery Staff</th>
+            <td>
+                <select name="select" class="form-control" required>
+                <option value="">-----SELECT-----</option>
+                    {% for i in data %}
+                    <option value="{{ i.id }}">{{ i.Staff_Fname }}{{ i.Staff_Lname }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+    <tr>
+        <th></th>
+        <th><input type="submit" name="submit" value="Assign" class="btn btn-success"></th>
+    </tr>
+    </table>
+</form>
+
+</body>
+</html>

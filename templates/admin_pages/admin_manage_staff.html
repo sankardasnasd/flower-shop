@@ -1,0 +1,228 @@
+{%include 'admin_pages/admin_header.html' %}
+  <style>
+      body {
+    background-image: url("/static/login/images/5.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+
+
+
+<div class="container">
+    <center>
+{%if q1%}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<center>
+    <div class="col-6 bg-light">
+        <h1 style="color: #d81a69; ">UPDATE STAFF</h1>
+
+            <table class="table table-bordered table-hover">
+        <tr>
+            <th> First Name</th>
+            <td> <input type="text"  id="Fname" name="Fname" value="{{q1.Staff_Fname}}" class="form-control"></td>
+        </tr>
+        <tr>
+            <th> Last Name</th>
+            <td> <input type="text" class="form-control" id="Lname" name="Lname" value="{{q1.Staff_Lname}}" class="form-control"></td>
+        </tr>
+        <tr>
+           <th>Gender</th>
+
+
+           {% if q1.Staff_Gender == 'Male' %}
+           <td><input type="radio" name="Gender" value="Male" checked>Male
+            <input type="radio" name="Gender" value="Female" >Female
+            <input type="radio" name="Gender" value="Others" >Others</td>
+
+            {% elif q1.Staff_Gender == 'Female' %}
+            <td><input type="radio" name="Gender" value="Male" >Male
+                <input type="radio" name="Gender" value="Female" checked >Female
+                <input type="radio" name="Gender" value="Others" >Others</td>
+
+            {% else %}
+            <td><input type="radio" name="Gender" value="Male" >Male
+                <input type="radio" name="Gender" value="Female" >Female
+                <input type="radio" name="Gender" value="Others" checked>Others</td>
+
+            {%endif%}
+
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td> <input type="date" id="DOB" name="DOB" value="{{q1.Staff_DOB}}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>House Name</th>
+            <td> <input type="text" id="House" name="House" value="{{q1.Staff_House}}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td> <input type="text" id="Place" name="Place" value="{{q1.Staff_Place}}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td> <input type="text" id="City" name="City" value="{{q1.Staff_City}}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>District</th>
+            <td> <input type="text" id="Dist" name="Dist" value="{{q1.Staff_Dist}}" pattern="[a-z A-Z]+" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Pincode</th>
+            <td> <input type="text" id="Pin" name="Pin" value="{{q1.Staff_Pin}}" pattern="[0-9]{9}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td> <input type="text" id="Phone" name="Phone" value="{{q1.Staff_Phone}}" pattern="[6789][0-9]{9}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td> <input type="file" id="Photo" name="Photo" value="{{q1.Staff_Photo}}" class="form-control" required></td>
+        </tr>
+        <tr >
+            <td colspan="2" align="center"><input type="submit" class="btn btn-danger" value="Update" name="Update"></td>
+        </tr>
+
+</table>
+
+    </div>
+</center>
+</form>
+
+{%else%}
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<cenetr>
+    <div class="col-6 bg-light">
+            <h1 style="color: #d81a69; ">ADD STAFF</h1>
+
+                    <table class="table table-bordered table-hover">
+        <tr>
+            <th> Username</th>
+            <td> <input type="email"  id="Username" name="Username" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td> <input type="password" id="Password" name="Password" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th> First Name</th>
+            <td> <input type="text" id="Fname" name="Fname" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th> Last Name</th>
+            <td> <input type="text" id="Lname" name="Lname" class="form-control" required></td>
+        </tr>
+        <tr>
+           <th>Gender</th>
+           <td><input type="radio" name="Gender" value="Male">Male
+           <input type="radio" name="Gender" value="Female">Female
+           <input type="radio" name="Gender" value="Others">Others</td>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td> <input type="date" id="DOB" name="DOB" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>House Name</th>
+            <td> <input type="text" id="House" name="House" class="form-control" pattern="[a-z A-Z]+" required></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td> <input type="text" id="Place" name="Place" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td> <input type="text" id="City" name="City" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>District</th>
+            <td> <input type="text" id="Dist" name="Dist" class="form-control" pattern="[a-z A-Z]+" required></td>
+        </tr>
+        <tr>
+            <th>Pincode</th>
+            <td> <input type="text" id="Pin" name="Pin" class="form-control" pattern="[0-9]{6}" required></td>
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td> <input type="text" id="Phone" name="Phone" class="form-control" pattern="[6789][0-9]{9}" required></td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td> <input type="file" id="Photo" name="Photo" class="form-control"></td>
+{#        </tr>#}
+{#                        <tr>#}
+{#                            <th>#}
+{#                                Type#}
+{#                            </th>#}
+{#                            <td><select required name="a" class="form-control">#}
+{#                                <option value="">----SELECT----</option>#}
+{#                                <option value="Staff">Staff</option>#}
+{#                                <option value="delivery">Delivery Boy</option>#}
+{#                            </select></td>#}
+{#                        </tr>#}
+
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Submit" name="Submit"></td>
+        </tr>
+
+</table>
+
+    </div>
+</cenetr>
+</form>
+<br><br>    
+</center>
+<table class="table table-success table-striped py-5">
+    <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>Photo</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th></th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {%for i in q3%}
+    <tr>
+     <td>{{forloop.counter}}</td>
+     <td><img src="{{i.Staff_Photo.url}}" alt="" width="200" height="200"></td>
+     <td>{{i.USERNAME_id}}</td>
+     <td>{{i.Staff_Fname}} {{i.Staff_Lname}}</td>
+     <td>{{i.Staff_House}} House {{i.Staff_Place}} {{i.Staff_City}} {{i.Staff_Dist}} {{i.Staff_Pin}}</td> 
+     <td>{{i.Staff_Phone}}</td>
+     <td>{{i.Staff_DOB}}</td>
+     <td>{{i.Staff_Gender}}</td>
+     <td>{{i.Type}}</td>
+     <td>{{i.Staff_Status}}</td>
+     <td>
+{#         {% if Staff_Status == 'Inactive' %}#}
+         <a href="/inactive_staff/{{i.id}}" class="btn btn-danger">Inactive</a>
+{#     {% else %}#}
+              <a href="/active_staff/{{i.id}}" class="btn btn-warning">Active</a>
+{#     {% endif %}#}
+
+     </td>
+     <td><a href="/admin_update_staff/{{i.id}}" class="btn btn-success">Update</a></td>
+  {%endfor%}
+
+  {%endif%}
+
+</table>
+</div>
+
+{%include 'footer.html' %}

@@ -1,0 +1,97 @@
+{%include 'customer_pages/customer_header.html'%}
+{# <script src=#}
+{#"https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js">#}
+{#    </script>#}
+<div class="container py-5">
+    <center>
+<h1>VIEW ORDERS</h1>
+{#<table class="table table-bordered">#}
+{##}
+{##}
+{#        <tr>#}
+{#            <th>Sl.No</th>#}
+{#            <th>Bill No</th>#}
+{#            <th>Order Date</th>#}
+{#            <th>Order Amount</th>#}
+{#            <th>Item Image</th>#}
+{#            <th>Status</th>#}
+{#            <th></th>#}
+{#        </tr>#}
+{#        {% for i in data %}#}
+{##}
+{#        <tr>#}
+{#        <td>{{ forloop.counter }}</td>#}
+{#            <td>{{ i.Bill_No }}</td>#}
+{#        <td>{{ i.Order_Date }}</td>#}
+{#        <td>{{ i.Order_Total }}</td>#}
+{#        <td>{{ i.Order_Status }}</td>#}
+{#        <td><a href="customer_manage_review/{{ i.id }}" class="btn btn-info" ="">Review</a> </td>#}
+{##}
+{##}
+{##}
+{#        </tr>#}
+{#        {% endfor %}#}
+{##}
+{#    </table>#}
+</center>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<div class="container">
+    <div class="row h-150 d-flex align-items-center justify-content-center">
+                        {%for i in data %}
+                          <div class="col-md-3 col-sm-6 ">
+                              <div class="product-grid">
+                                  <div class="product-image">
+
+                                      <ul class="product-links">
+
+{#                                          <li><a href="add_cart/{{ i.id }}"><i class="fas fa-shopping-cart"></i></a></li>#}
+
+                                      </ul>
+                                  </div>
+                                  <div class="product-content text-align-center">
+                                      <h3 class="title"><a href="#">Bill No  :  {{ i.Bill_No }}</a></h3>
+                                      <div class="price">Order Date  :{{ i.Order_Date }}</div>
+                                      <div class="price">Total : {{ i.Order_Total }}</div>
+                                      <div class="price">Status : {{ i.Order_Status }}</div>
+{#                                      <a href="cust_view_bill/{{ i.id }}"><i class="fas fa-shopping-cart">Invoice</i></a>#}
+                                      <div class="mt"><a href="customer_manage_review/{{ i.id }}" class="btn btn-warning ">Review</a>
+                                      <a href="bill/{{ i.id }}" id="btn" download="" class="btn btn-info">Download</a></div>
+{#                                      <div class="mt">#}
+{#                                          <a href="customer_manage_review/{{ i.id }}" class="btn btn-primary ">Review</a>#}
+{#                                      <a href="customer_cart_customization/{{ i.id }}" class="btn btn-info ">Customize</a></div>#}
+                                  </div>
+                              </div>
+                          </div>
+
+                          {% endfor %}
+                      </div>
+
+
+</div>
+
+{# <script>#}
+{#        let button = document.getElementById("btn");#}
+{#        button.addEventListener("click", function () {#}
+{#            let doc = new jsPDF();#}
+{#            let pdf = document.querySelector(".GFG");#}
+{#            doc.fromHTML(pdf);#}
+{#            doc.save("GFG.pdf");#}
+{#        });#}
+{#    </script>#}
+
+
+
+
+{%include 'cust_footer.html' %}

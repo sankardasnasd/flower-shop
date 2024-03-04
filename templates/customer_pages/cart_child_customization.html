@@ -1,0 +1,157 @@
+{%include 'customer_pages/customer_header.html' %}
+
+
+
+
+
+
+
+
+<style>
+    .small-input {
+    width: 40px; /* Set the width as per your requirement */
+    height: 30px; /* Set the height as per your requirement */
+    /* You can add more styling as needed */
+}
+     /* Optional: Styles for better appearance */
+    .quantity {
+        display: flex;
+        align-items: center;
+    }
+    .quantity input {
+        width: 50px;
+        text-align: center;
+        font-size: 16px;
+    }
+    .quantity button {
+{#        background-color: #4CAF50;#}
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 4px;
+    }
+</style>
+
+<body>
+
+<div class="container py-5">
+
+<form method="post" >{% csrf_token %}
+
+
+
+    <table class="table table-bordered">
+    <tr>
+        <th>Choose Image</th>
+        <td>
+            <input type="file" name="image"  class="form-control">
+</td>
+   <tr>
+
+
+
+    <th>Quantity</th>
+    <td>
+
+        <div class="quantity">
+    <button id="minus-btn" class="btn btn-danger">-</button>
+    <input id="quantity-input" type="text" value="1">
+    <button id="plus-btn" class="btn btn-success">+</button>
+</div>
+
+{#        <a href="customize_increase_quantity_cust/{{ i.id }}" class="btn btn-success increase-quantity" data-cart-item-id="{{ i.id }}">+</a>#}
+{#        <input type="text" id="quantity-{{ i.id }}" name="number" class="small-input" value="{{ i.quantity }}">#}
+{#        <a href="" class="btn btn-danger">-</a>#}
+    </td>
+</tr>
+
+
+</table>
+
+    <table class="table table-bordered">
+    <tr>
+    </tr>
+
+        {% for i in data2 %}
+    <tr>
+        <th></th>
+        <th><img src="{{ i.FLOWER.Img.url  }}" width="200px" height="200px"> </th>
+        <th>{{ i.FLOWER.Flower_Name  }}</th>
+                    <input type="hidden" name="id" value="{{ i.id }}"  class="form-control">
+
+        <th><textarea name="description" required class="form-control"></textarea></th>
+    </tr>
+    <tr>
+        {% endfor %}
+        <th></th>
+        <th><input type="submit" name="submit" value="Save" class="btn btn-info"></th>
+    </tr>
+</table>
+</form>
+
+
+
+</div>
+
+<script>
+    document.getElementById('plus-btn').addEventListener('click', function() {
+        var input = document.getElementById('quantity-input');
+        var value = parseInt(input.value, 10);
+        input.value = isNaN(value) ? 1 : value + 1;
+    });
+
+    document.getElementById('minus-btn').addEventListener('click', function() {
+        var input = document.getElementById('quantity-input');
+        var value = parseInt(input.value, 10);
+        input.value = isNaN(value) || value < 2 ? 1 : value - 1;
+    });
+</script>
+
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#<meta charset="UTF-8">#}
+{#<meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#<title>Cart Quantity</title>#}
+{#<style>#}
+{##}
+{#</style>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<div class="quantity">#}
+{#    <button id="minus-btn">-</button>#}
+{#    <input id="quantity-input" type="text" value="1">#}
+{#    <button id="plus-btn">+</button>#}
+{#</div>#}
+{##}
+{#<script>#}
+{#    document.getElementById('plus-btn').addEventListener('click', function() {#}
+{#        var input = document.getElementById('quantity-input');#}
+{#        var value = parseInt(input.value, 10);#}
+{#        input.value = isNaN(value) ? 1 : value + 1;#}
+{#    });#}
+{##}
+{#    document.getElementById('minus-btn').addEventListener('click', function() {#}
+{#        var input = document.getElementById('quantity-input');#}
+{#        var value = parseInt(input.value, 10);#}
+{#        input.value = isNaN(value) || value < 2 ? 1 : value - 1;#}
+{#    });#}
+{#</script>#}
+{##}
+{#</body>#}
+{#</html>#}
+{##}
+
+
+
+
+
+
+
+
+
+
+

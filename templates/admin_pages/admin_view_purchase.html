@@ -1,0 +1,43 @@
+{%include 'admin_pages/admin_header.html'%}
+<style>
+      body {
+    background-image: url("/static/login/images/5.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+<h1 style="color: #d81a69;">VIEW PURCHASE</h1>
+<table  class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>Vendor Company Name</th>
+            <th>Purchased Date</th>
+            <th>Unit Price</th>
+            <th>Selling Price</th>
+            <th>Quantity</th>
+            <th>Total Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+        <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.PM.VENDOR.V_name }}</td>
+            <td>{{ i.PM.Pm_Date }}</td>
+        <td>{{ i.Cost_Price }}</td>
+                <td>{{ i.Selling_Price }}</td>
+                <td>{{ i.Purch_Quantity }}</td>
+                <td>{{ i.PM.Tot_Amt }}</td>
+
+
+
+
+
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+{%include 'footer.html' %}

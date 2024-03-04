@@ -1,0 +1,129 @@
+{%include 'staff_pages/staff_header.html' %}
+<style>
+      body {
+    background-image: url("/static/login/images/6.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+<div class="container " >
+    <center>
+{%if q6%}
+<div class="bg-light">
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1 style="color: #d81a69; ">Edit FLOWER</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <td> <input type="text" id="Flowername" name="Flowername" value="{{q6.Flower_Name}}" required class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Colour</th>
+            <td> <input type="text" id="Color" name="Color" value="{{q6.Color}}" required class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td> <input type="file" id="Flowerimg" name="Flowerimg" value="{{q6.Img}}"  class="form-control"></td>
+        </tr>
+
+
+        <tr>
+            <th>Type</th>
+
+
+            {% if q6.Type == 'Fresh' %}
+            <td><input type="radio" name="Type" value="Fresh" checked>Fresh
+             <input type="radio" name="Type" value="Artificial" >Artificial
+
+             {% else %}
+             <td><input type="radio" name="Type" value="Fresh" checked>Fresh
+                <input type="radio" name="Type" value="Artificial" >Artificial
+
+             {%endif%}
+
+         </tr>
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Update" name="Update"></td>
+        </tr>
+
+</table>
+</form>
+
+</div>
+{%else%}
+
+    <div class="bg-light">
+    <form action="" method="post" enctype="multipart/form-data">
+ {% csrf_token %}
+    <h1 style="color: #d81a69; ">ADD FLOWER</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <td> <input type="text" id="Flowername" name="Flowername" required class="form-control" placeholder="Enter Here"></td>
+        </tr>
+        <tr>
+            <th>Colour</th>
+            <td> <input type="text" id="Color" name="Color" required class="form-control" placeholder="Enter Here"></td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td> <input type="file" id="Flowerimg" name="Flowerimg" required class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td><select name="Category" id="Category" class="form-control">
+                <option value="">----select----</option>
+                <option value="">Bouquet</option>
+                <option value="">Garland</option>
+            </select></td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td><select name="Type" id="Type" class="form-control">
+                <option value="">----select----</option>
+                <option value="">Fresh</option>
+                <option value="">Artificial</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Submit" name="Submit"></td>
+        </tr>
+
+</table>
+</form>
+
+    </div>
+</center>
+<br><br>
+<table  class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>Flower Name</th>
+            <th>Color</th>
+            <th>Image</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in a3 %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.Flower_Name}}</td>
+            <td>{{ i.Color }}</td>
+            <td><img src="{{i.Img.url}}" alt="" width="200" height="200"></td>
+            <td>{{ i.Type }}</td>
+            <td>{{ i.Flower_Status }}</td>
+            <td><a href="/staff_update_flower/{{i.id}}" class="btn btn-success">Update</a></td>
+        </tr>
+        {% endfor %}
+        {%endif%}
+    </tbody>
+</table>
+</div>
+{%include 'footer.html' %}

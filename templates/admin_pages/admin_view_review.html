@@ -1,0 +1,48 @@
+{%include 'admin_pages/admin_header.html'%}
+<style>
+      body {
+    background-image: url("/static/login/images/5.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+<h1  style="color: #d81a69;">VIEW REVIEW</h1>
+<table  class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Item Name</th>
+            <th>Review</th>
+            </th>
+
+        </tr>
+    </thead>
+
+</thead>
+{%for i in a3%}
+
+ <td>{{forloop.counter}}</td>
+ <td>{{i.CUSTOMER.USERNAME.Username}}</td>
+ <td>{{i.CUSTOMER.C_Fname}} {{i.CUSTOMER.C_Lname}}</td>
+ <td>{{i.ITEM.Item_Name}}</td>
+ <td>{{i.Review_Desc}}</td>
+
+
+
+<tr>
+    {%endfor%}
+</tr>
+
+
+    <tbody>
+        <tr>
+            
+
+        </tr>
+    </tbody>
+    </table>
+
+{%include 'footer.html' %}

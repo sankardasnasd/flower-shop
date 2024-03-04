@@ -1,0 +1,366 @@
+{%include 'customer_pages/customer_header.html'%}
+<br>
+<div class="container">
+
+
+
+    <style>
+
+        .product-grid .product-image img {
+    width: 200px; /* Set the desired width */
+    height: 200px; /* Set the desired height */
+    object-fit: cover; /* Ensure the image covers the entire space */
+}
+        .product-grid .product-image img {
+    width: auto;
+    height: 200px; /* Set the desired height */
+    object-fit: cover; /* Ensure the image covers the entire space */
+}
+
+
+         .product-grid {
+        background-color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        height: 400px; /* Adjust the height as needed */
+    }
+
+    .product-grid .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure the image covers the entire space */
+    }
+
+    .product-content {
+        padding: 15px 0;
+    }
+
+    .title a {
+        font-size: 18px;
+        color: #333;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .price {
+        color: var(--bs-hover);
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .price span {
+        color: #555;
+        font-size: 14px;
+        font-weight: 400;
+        text-decoration: line-through;
+        margin-right: 5px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+        :root{
+            --bs-white: #fff;
+            --bs-gray: #6c757d;
+            --bs-hover:#192a56;
+            --bs-primary:#565c64;
+        }
+        .product-grid{
+          background-color: #fff;
+          font-family: 'Montserrat', sans-serif;
+          text-align: center;
+        }
+        .product-grid .product-image{
+          overflow: hidden;
+          position: relative;
+        }
+        .product-grid .product-image a.image{ display: block; }
+            .product-grid .product-image img{
+            width: 100%;
+            height: auto;
+            }
+            .product-grid .product-image .pic-1{ transition: all 0.3s ease 0s; }
+            .product-grid .product-image:hover .pic-1{ transform: translateX(100%); }
+            .product-grid .product-image .pic-2{
+            width: 100%;
+            height: 100%;
+            transform: translateX(-101%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 0.3s ease 0s;
+            }
+            .product-grid .product-image:hover .pic-2{ transform: translateX(0); }
+            .product-grid .product-sale-label{
+            color: #fff;
+            background: var(--bs-hover);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 8px;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            }
+            .product-grid .product-like-icon{
+            color: #696969;
+            font-size: 22px;
+            line-height: 20px;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            }
+            .product-grid .product-like-icon:hover{ color: var(--bs-hover); }
+            .product-grid .product-like-icon:before,
+            .product-grid .product-like-icon:after{
+            content: attr(data-tip);
+            color: #fff;
+            background-color: #000;
+            font-size: 12px;
+            line-height: 18px;
+            padding: 7px 7px 5px;
+            visibility: hidden;
+            position: absolute;
+            right: 0;
+            top: 15px;
+            transition: all 0.3s ease 0s;
+            }
+            .product-grid .product-like-icon:after{
+            content: '';
+            height: 15px;
+            width: 15px;
+            padding: 0;
+            transform: translateX(-50%) rotate(45deg);
+            right: auto;
+            left: 50%;
+            top: 15px;
+            z-index: -1;
+            }
+            .product-grid .product-like-icon:hover:before,
+            .product-grid .product-like-icon:hover:after{
+            visibility: visible;
+            top: 30px;
+            }
+            .product-grid .product-links{
+            width: 170px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            opacity: 0;
+            transform: translateX(-50%);
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transition: all 0.3s ease 0s;
+            }
+            .product-grid:hover .product-links{
+            bottom: 40px;
+            opacity: 1;
+            }
+            .product-grid .product-links li{
+            display: inline-block;
+            margin: 0 2px;
+            }
+            .product-grid .product-links li a{
+            color: #fff;
+            background: #192a56;
+            font-size: 16px;
+            line-height: 48px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: block;
+            transition: all 0.3s ease 0s;
+            }
+            .product-grid:hover .product-links li a:hover{ background: #333; }
+            .product-grid .product-content{
+            text-align: center;
+            padding: 15px 0 0;
+            }
+            .product-grid .title{
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: capitalize;
+            margin: 0 0 8px;
+            }
+
+            .product-grid {
+        height: 500px; /* Adjust this value to increase or decrease the height */
+    }
+            .product-grid .title a{
+            color: #333;
+            transition: all 0.3s ease 0s;
+            text-decoration:none;
+            font-weight:600;
+            font-size:18px;
+            }
+            .product-grid .title a:hover{ color: var(--bs-hover); }
+            .product-grid .price{
+            color: var(--bs-hover);
+            font-size: 16px;
+            font-weight: 500;
+            }
+            .product-grid .price span{
+            color: #555;
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: line-through;
+            margin: 0 5px 0 0;
+            }
+            @media screen and (max-width: 990px){
+            .product-grid{ margin: 0 0 30px; }
+            }
+            .product-grid {
+                background-color: #fff;
+                font-family: 'Montserrat', sans-serif;
+                text-align: center;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+
+            .product-grid .product-image {
+                overflow: hidden;
+                position: relative;
+            }
+            .product-head{
+              text-align: center;
+              font-weight: 700;
+              font-size: 35px;
+              text-transform: capitalize;
+              color:#0066b2;
+              text-shadow: 1px 1px 50px rgb(0,0,0, 0.50);
+              font-family: 'Arvo', serif;
+
+
+            }
+            .mt{
+              margin-bottom: 8px !important;
+
+            }
+            /* ... Your existing styles ... */
+            @media screen and (max-width: 990px) {
+                .product-grid {
+                    margin: 0 0 30px;
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </style>
+        <br>
+
+    <center>
+<h1>VIEW PRODUCTS</h1>
+    <form method="post" action="customer_view_products">{% csrf_token %}
+
+
+
+        <table class="table">
+        <tr>
+            <th><select class="form-control" name="category" required>
+                            <option value="">-----SELECT------</option>
+
+                {% for i in categories %}
+
+                <option value="{{ i.id }}">{{ i.Cat_Name }}</option>
+                {% endfor %}
+            </select></th>
+        <td><button type="submit" name="submit" class="btn btn-primary btn-search"> <i class="fa fa-search"></i></button>
+</td>
+        </tr>
+    </table>
+{#<div class="container">#}
+{#        <h2 class="text-center">Search</h2>#}
+{#        <form action="#" method="GET">#}
+{#            <div class="form-group">#}
+{#                <label for="category">Category:</label>#}
+{#                <select class="form-control" name="category" required>#}
+{#                    <option value="">-----SELECT------</option>#}
+{#                    {% for i in categories %}#}
+{#                    <option value="{{ i.id }}">{{ i.Cat_Name }}</option>#}
+{#                    {% endfor %}#}
+{#                </select>#}
+{#            </div>#}
+{#            <button type="submit" name="submit" class="btn btn-primary btn-search">Search <i class="fa fa-search"></i></button>#}
+{#        </form>#}
+{#    </div>#}
+
+
+<div class="row h-150 d-flex align-items-center justify-content-center">
+                        {%for i in items %}
+                          <div class="col-md-3 col-sm-6 ">
+                              <div class="product-grid">
+                                  <div class="product-image">
+                                      <a href="#" class="image">
+                                          <img class="pic-1" src="{{i.Item_Img}}">
+                                          <img class="pic-2" src="{{i.Item_Img}}">
+                                      </a>
+                                      <a href="#" class="product-like-icon" data-tip="Add to Wishlist">
+
+                                      </a>
+                                      <ul class="product-links">
+
+                                          <li><a href="add_cart/{{ i.id }}"><i class="fas fa-shopping-cart"></i></a></li>
+
+                                      </ul>
+                                  </div>
+                                  <div class="product-content text-align-center">
+                                      <h3 class="title"><a href="#">{{i.Item_Name}}</a></h3>
+                                      <div class="price">Category:{{i.CAT.Cat_Name}}</div>
+                                      <div class="price">{{i.Item_Desc}}</div>
+                                      <div class="price">Price INR{{i.Item_Cost}}</div>
+{#                                      <a href="add_cart/{{ i.id }}"><i class="fas fa-shopping-cart">Add To Cart</i></a>#}
+                                      <div class="mt"><a href="add_cart/{{ i.id }}" class="btn btn-warning ">Addtocart</a></div>
+                                      <div class="mt">
+{#                                          <a href="customer_manage_review/{{ i.id }}" class="btn btn-primary ">Review</a>#}
+                                      <a href="customer_cart_customization/{{ i.id }}" class="btn btn-info ">Customize</a></div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          {% endfor %}
+                      </div>
+                    </center>
+                    </div>
+    </form>
+
+<br><br><br>
+
+
+
+
+
+
+
+
+
+
+{%include 'cust_footer.html' %}

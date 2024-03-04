@@ -1,0 +1,106 @@
+{%include 'customer_pages/customer_header.html'%}
+<center>
+<div class="container py-5">
+    <h1>VIEW PROFILE</h1>
+
+{#    <center>#}
+                    <section style="background-color: #eee;">
+  <div class="container py-5 bg-dark">
+    <div class="row">
+      <div class="col">
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0 text-dark">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ data.C_Fname }}{{ data.C_Lname }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0 text-dark">Gender</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ data.C_Gender }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0 text-dark">Dob</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ data.C_DOB }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ data.USERNAME.Username }}</p>
+              </div>
+            </div>
+            <hr>
+{#            <div class="row">#}
+{#              <div class="col-sm-3">#}
+{#                <p class="mb-0">Phone</p>#}
+{#              </div>#}
+{#              <div class="col-sm-9">#}
+{#                <p class="text-muted mb-0">(097) 234-5678</p>#}
+{#              </div>#}
+{#            </div>#}
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Mobile</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ data.C_Phone }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ data.C_House }}<br>
+                {{ data.C_Place }}<br>
+                {{ data.C_City }}<br>
+                {{ data.C_Dist }}<br>
+                {{ data.C_Pin }}<br></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"></p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><a href="edit_profile" class="btn btn-success">Edit Profile</a><br>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+        </div>
+
+{#    </center>#}
+</div>
+
+</center>
+
+{%include 'cust_footer.html' %}

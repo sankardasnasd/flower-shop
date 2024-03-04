@@ -1,0 +1,141 @@
+{%include 'admin_pages/admin_header.html' %}
+ <style>
+      body {
+    background-image: url("/static/login/images/5.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+<div class="container">
+    <center>
+{%if q1%}
+    <div class="" >
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <center>
+        <div class="col-6 bg-light">
+            <h1  style="color: #d81a69;">UPDATE FLOWER</h1>
+
+                <table class="table table-bordered table-hover" style="color: black">
+        <tr>
+            <th>Name</th>
+            <td> <input type="text" id="Flowername" name="Flowername" value="{{q1.Flower_Name}}" class="form-control" placeholder="Enter Here" required></td>
+        </tr>
+        <tr>
+            <th>Colour</th>
+            <td> <input type="text" id="Color" name="Color" value="{{q1.Color}}" class="form-control" pattern="[a-z A-Z]+" placeholder="Enter Here" required></td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td> <input type="file" id="Flowerimg" required name="Flowerimg" value="{{q1.Img}}" class="form-control" ></td>
+        </tr>
+
+
+        <tr>
+            <th>Type</th>
+
+
+            {% if q1.Type == 'Fresh' %}
+            <td><input type="radio" name="Type" value="Fresh" checked>Fresh
+             <input type="radio" name="Type" value="Artificial" >Artificial
+
+             {% else %}
+             <td><input type="radio" name="Type" value="Fresh" checked>Fresh
+                <input type="radio" name="Type" value="Artificial" >Artificial
+
+             {%endif%}
+
+         </tr>
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Update" class="btn btn-info" name="Update"></td>
+        </tr>
+
+</table>
+
+</div>
+
+
+    </center>
+</form>
+
+</div>
+{%else%}
+    <div class="" >
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<center>
+    <div class="col-6 bg-light" >
+            <h1  style="color: #d81a69;">ADD FLOWER</h1>
+
+            <table class="table table-bordered table-hover" style="color: black">
+        <tr>
+            <th>Name</th>
+            <td> <input type="text" id="Flowername" name="Flowername"  class="form-control" placeholder="Enter Here" required></td>
+        </tr>
+        <tr>
+            <th>Colour</th>
+            <td> <input type="text" id="Color" name="Color" pattern="[a-z A-Z]+" placeholder="Enter Here"  class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td> <input type="file" id="Flowerimg" name="Flowerimg" required class="form-control"></td>
+        </tr>
+
+
+        <tr>
+            <th>Type</th>
+            <td><select name="Type" id="Type" class="form-control">
+                <option value="" selected="">----select----</option>
+                <option value="Fresh" name="Type">Fresh</option>
+                <option value="Artificial" name="Type">Artificial</option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Submit" name="Submit" ></td>
+        </tr>
+
+</table>
+
+
+    </div>
+</center>
+</form>
+</center>
+</div>
+<br><br>
+
+<table class="table table-success table-striped py-5">
+    <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>Flower Name</th>
+            <th>Color</th>
+            <th>Image</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in a3 %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.Flower_Name}}</td>
+            <td>{{ i.Color }}</td>
+            <td><img src="{{i.Img.url}}" alt="" width="200" height="200"></td>
+            <td>{{ i.Type }}</td>
+            <td>{{ i.Flower_Status }}</td>
+            <td><a href="/admin_update_flower/{{i.id}}" class="btn btn-success">Update</a></td>
+        </tr>
+        {% endfor %}
+
+        {%endif%}
+    </tbody>
+</table>
+
+</div>
+
+{%include 'footer.html' %}

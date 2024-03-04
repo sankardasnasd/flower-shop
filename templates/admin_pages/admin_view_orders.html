@@ -1,0 +1,55 @@
+{%include 'admin_pages/admin_header.html'%}
+<style>
+      body {
+    background-image: url("/static/login/images/5.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+<h1 style="color: #d81a69;">VIEW ORDERS</h1>
+<table  class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>Bill No</th>
+            <th>Order Date</th>
+            <th>Order Amount</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone No</th>
+            <th>Status</th>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.Bill_No }}</td>
+            <td>{{ i.Order_Date }}</td>
+            <td>{{ i.Order_Total }}</td>
+            <td>{{ i.CARTMAST.CUSTOMER.C_Fname }}{{ i.CARTMAST.CUSTOMER.C_Lname }}</td>
+            <td>{{ i.CARTMAST.CUSTOMER.C_Place }}<br>{{ i.CARTMAST.CUSTOMER.C_City }}</td>
+            <td>{{ i.CARTMAST.CUSTOMER.C_Phone }}</td>
+
+
+
+        <td>
+{#            {% if i.Order_Status == 'ordered' %}#}
+{#            <a href="assign_dellivery/{{ i.id }}" class="btn btn-info">Assign</a>#}
+{#            {% else %}#}
+            {{ i.Order_Status }}
+{#            {% endif %}#}
+        </td>
+        <td>            <a href="admin_view_order_more/{{ i.CARTMAST.id }}" class="btn btn-warning">View More</a>
+</td>
+
+
+
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+{%include 'footer.html' %}

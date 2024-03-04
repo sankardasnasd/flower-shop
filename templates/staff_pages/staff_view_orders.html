@@ -1,0 +1,52 @@
+{%include 'staff_pages/staff_header.html'%}
+<style>
+      body {
+    background-image: url("/static/login/images/6.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+<h1 style="color: #d81a69; ">VIEW ORDERS</h1>
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>Bill No</th>
+            <th>Order Date</th>
+            <th>Order Amount</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Place</th>
+            <th>City</th>
+            <th>Phone No</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.Bill_No }}</td>
+            <td>{{ i.Order_Date }}</td>
+            <td>{{ i.Order_Total }}</td>
+            <td>{{ i.CARTMAST.CUSTOMER.C_Fname }}</td>
+            <td>{{ i.CARTMAST.CUSTOMER.C_Lname }}</td>
+            <td>{{ i.CARTMAST.CUSTOMER.C_Place }}</td>
+            <td>{{ i.CARTMAST.CUSTOMER.C_City }}</td>
+            <td>{{ i.CARTMAST.CUSTOMER.C_Phone }}</td>
+            <td>
+            {% if i.Order_Status == 'ordered' %}
+            <a href="staff_update_order/{{ i.id }}" class="btn btn-info">Update</a>
+            {% else %}
+            {{ i.Order_Status }}
+            {% endif %}
+        </td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+{%include 'footer.html' %}

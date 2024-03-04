@@ -1,0 +1,132 @@
+{%include 'public_pages/public_header.html' %}
+<html>
+<head>
+    <title>Signup</title>
+</head>
+<body class="bg-info">
+
+<style>
+    /* Style for the form container */
+    form {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style for form headings */
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Style for form table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    /* Style for form labels */
+    th {
+        text-align: left;
+        padding: 8px;
+    }
+
+    /* Style for form inputs */
+    td {
+        padding: 8px;
+    }
+
+    /* Style for form submit button */
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #cd488a;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #cd488a;
+    }
+
+
+    body {
+ background-image: url("/static/login/images/3.jpg");
+ background-color: #cccccc;
+}
+</style>
+<form action="" method="post">
+    {% csrf_token %}
+    <h1>SIGNUP</h1>
+    <table>
+        <tr>
+            <th> First Name</th>
+            <td> <input type="text" id="Fname" name="Fname" required pattern="[a-z A-Z]+"></td>
+        </tr>
+        <tr>
+            <th> Last Name</th>
+            <td> <input type="text" id="Lname" name="Lname" required pattern="[a-z A-Z]+"></td>
+        </tr>
+        <tr>
+           <th>Gender</th>
+           <td><input type="radio" name="Gender" value="Male">Male
+           <input type="radio" name="Gender" value="Female">Female
+           <input type="radio" name="Gender" value="Others">Others</td>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td> <input type="date" id="DOB" name="DOB" required></td>
+        </tr>
+        <tr>
+            <th>House Name</th>
+            <td> <input type="text" id="House" name="House" required pattern="[a-z A-Z]+"></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td> <input type="text" id="Place" name="Place" required></td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td> <input type="text" id="City" name="City" required></td>
+        </tr>
+        <tr>
+            <th>District</th>
+            <td> <input type="text" id="Dist" name="Dist" pattern="[a-z A-Z]+" required></td>
+        </tr>
+        <tr>
+            <th>Pincode</th>
+            <td> <input type="text" id="Pin" name="Pin" required pattern="[0-9]{6}"></td>
+        </tr>
+        <tr>
+            <th>Phone Number</th>
+            <td> <input type="text" id="Phone" name="Phone" required pattern="[6789][0-9]{9}"></td>
+        </tr>
+        <tr>
+            <th> Username</th>
+            <td> <input type="email" id="Username" name="Username" required></td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td> <input type="password" id="Password" name="Password" required></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit" name="Submit"></td>
+        </tr>
+
+
+</table>
+</form>
+
+
+
+</body>
+
+</html>
+{%include 'cust_footer.html' %}

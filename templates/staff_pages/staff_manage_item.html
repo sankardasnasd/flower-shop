@@ -1,0 +1,183 @@
+{%include 'staff_pages/staff_header.html' %}
+<style>
+      body {
+    background-image: url("/static/login/images/6.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+<div class="container"  >
+{%if q6%}
+
+<div class="bg-light">
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1 style="color: #d81a69; ">UPDATE ITEM</h1>
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <td> <input type="text" id="Itemname" name="Itemname" value="{{q6.Item_Name}}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><textarea name="Itemdesc" id="Itemdesc" cols="80" rows="5" class="form-control" required>{{q6.Item_Desc}}</textarea></td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td> <input type="file" id="Itemimg" name="Itemimg" value="{{q6.Item_Img}}" class="form-control" ></td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td> <input type="text" id="Price" name="Price" value="{{q6.Item_Cost}}" class="form-control" required pattern="[0-9]+"></td>
+        </tr>
+        <tr>
+            <th>Profit Percentage</th>
+            <td> <input type="text" id="Profit" name="Profit" value="{{q6.Profit_Per}}" class="form-control" pattern="[0-9]{1,3}(\.[0-9]{1,2})?%"  required></td>
+        </tr>
+        <tr>
+            <th>Category</th>
+           <td>
+            <select name="Category" class="form-control" >
+{#                <option value="{{q6.CAT.id}}" selected>{{a3.CAT.Cat_Name}}</option>#}
+                {%for i in q7%}
+            <option value="{{i.id}}">{{i.Cat_Name}}</option>
+               {%endfor%}
+            </select>
+        </td>
+        </tr>
+        <tr>
+            <th>Flower</th>
+          <td>
+
+            {%for i in q8%}
+
+            <input type="checkbox" value="{{i.id}}" name="flower"/>{{i.Flower_Name}}
+                {%endfor%}
+
+        </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Update" name="Update"></td>
+        </tr>
+
+</table>
+</form>
+
+</div>
+{%else%}
+<div class="bg-light">
+<form action="" method="post" enctype="multipart/form-data">
+ {% csrf_token %}
+    <h1 style="color: #d81a69; ">ADD ITEM</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <td> <input type="text" id="Itemname" name="Itemname" class="form-control" required placeholder="Enter here"></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><textarea name="Itemdesc" id="Itemdesc" cols="80" rows="5" class="form-control" required  placeholder="Enter here"></textarea></td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td> <input type="file" id="Itemimg" name="Itemimg" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td> <input type="text" id="Price" name="Price" class="form-control" required pattern="[0-9]+"  placeholder="Enter here"></td>
+        </tr>
+        <tr>
+            <th>Profit Percentage</th>
+            <td> <input type="text" id="Profit" name="Profit" class="form-control" required  placeholder="Enter here" pattern="[0-9]{1,3}(\.[0-9]{1,2})?%" ></td>
+        </tr>
+        <tr>
+            <th>Category</th>
+            <td><select name="Category" id="Category" class="form-control" required>
+                <option value="">-----select-----</option>
+                {% for i in a2 %}
+                <option value="{{ i.id }}">{{ i.Cat_Name }}</option>
+{#                <option value="">Garland</option>#}
+                {% endfor %}
+            </select></td>
+        </tr>
+{#        <tr>#}
+{#            <th>Flower</th>#}
+{#            <td><select name="Flower" id="Flower" class="form-control" required>#}
+{#                <option value="">----select----</option>#}
+{#                {% for i in a1 %}#}
+{#                <option value="{{ i.id }}">{{ i.Flower_Name }}</option>#}
+{#                {% endfor %}#}
+{#            </select></td>#}
+{#        </tr>#}
+{#    #}
+
+    <tr>
+            <th>Flower</th>
+          <td>
+
+            {%for i in a1%}
+
+            <input type="checkbox" value="{{i.id}}" name="flower"/>{{i.Flower_Name}}
+                {%endfor%}
+
+        </td>
+        </tr>
+
+
+
+
+
+        <tr>
+
+
+
+            <td colspan="2" align="center"><input type="submit" value="Submit" name="Submit"></td>
+        </tr>
+
+</table>
+</form>
+
+</div>
+<table class="table table-bordered bg-light">
+    <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>Category</th>
+
+            <th>Item Name</th>
+            <th>Description</th>
+            <th>Profit Percentage</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Status</th>
+            <th>Action</th>
+            <th></th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {%for i in a3%}
+    <tr>
+     <td>{{forloop.counter}}</td>
+     <td>{{i.CAT.Cat_Name}}</td>
+
+     <td>{{i.Item_Name}}</td>
+     <td>{{i.Item_Desc}} </td>
+     <td>{{i.Profit_Per}}</td>
+     <td>{{i.Item_Cost}}</td>
+     <td><img src="{{i.Item_Img}}" alt="" width="200" height="200"></td>
+     <td>{{i.Item_Status}}</td>
+     <td><a href="staff_active_item/{{i.id}}" class="btn btn-primary">Active</a></td>
+     <td><a href="staff_deactive_item/{{i.id}}" class="btn btn-warning">Deactive</a></td>
+     <td><a href="item_view_more/{{i.id}}" class="btn btn-info">View More</a></td>
+     <td><a href="/staff_update_item/{{i.id}}" class="btn btn-success">Update</a></td>
+
+  {%endfor%}
+
+  {%endif%}
+
+</table>
+</div>
+{%include 'footer.html' %}

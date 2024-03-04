@@ -1,0 +1,45 @@
+{%include 'admin_pages/admin_header.html' %}
+
+<style>
+      body {
+    background-image: url("/static/login/images/5.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+<center>
+<div >
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <center>
+        <div class="col-6 bg-light">
+            <h1 style="color: #d81a69;" >ADD FLOWERS</h1>
+
+                <table  class="table table-bordered table-hover">
+        <tr>
+            <th>Flower</th>
+           <td>
+            <select name="Flower" class="form-control">
+                <option selected>---Select---</option>
+                {%for i in a1%}
+            <option value="{{i.id}}">{{i.Flower_Name}}</option>
+               {%endfor%}
+            </select>
+        </td>
+        </tr>
+
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Submit" name="Submit"></td>
+        </tr>
+
+</table>
+
+        </div>
+    </center>
+</form>
+
+</div>
+</center>
+{%include 'footer.html' %}

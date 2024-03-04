@@ -1,0 +1,84 @@
+{%include 'staff_pages/staff_header.html' %}
+<style>
+      body {
+    background-image: url("/static/login/images/6.jpg");
+          background-repeat: no-repeat;
+          background-size: auto;
+         background-repeat: no-repeat;
+  background-size: 1600px 900px;
+  </style>
+
+<div class="container " >
+    <center>
+{%if q0%}
+<div class="bg-light">
+<form action="" method="post">
+
+    {% csrf_token %}
+        <h1 style="color: #d81a69; ">UPDATE CATEGORY</h1>
+
+    <table>
+        <tr>
+            <th>Category Name</th>
+            <td> <input type="text" placeholder="Category Name" id="Catname" name="Catname" value="{{q0.Cat_Name}}" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Category Description</th>
+            <td><textarea name="Catdesc" id="Description" cols="80" rows="5" required class="form-control">{{q0.Cat_Desc}}</textarea></td>
+        <tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Update" name="Update" class="btn btn-success"></td>
+        </tr>
+    </table>
+</form>
+
+</div>
+{%else%}
+
+    <div class="bg-light">
+    <form action="" method="post">
+{% csrf_token %}
+    <h1 style="color: #d81a69; ">ADD CATEGORY</h1>
+    <table>
+        <tr>
+            <th>Category Name</th>
+            <td> <input type="text" placeholder="Category Name" id="Catname" name="Catname" class="form-control" required></td>
+        </tr>
+        <tr>
+            <th>Category Description</th>
+            <td><textarea name="Catdesc" id="Description" cols="80" rows="5" required placeholder="Enter Here" class="form-control"></textarea></td>
+        <tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Submit" name="submit"></td>
+        </tr>
+
+</table>
+</form>
+
+    </div>
+<br><br>
+</center>
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            <th>Sl.No</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in a6 %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.Cat_Name }}</td>
+            <td>{{ i.Cat_Desc }}</td>
+            <td><a href="/staff_update_category/{{i.id}}" class="btn btn-success">Update</a></td>
+        </tr>
+        {% endfor %}
+
+        {%endif%}
+    </tbody>
+</table>
+</div>
+{%include 'footer.html' %}
